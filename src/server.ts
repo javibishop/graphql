@@ -1,7 +1,7 @@
 import express from 'express';
 import compression from 'compression';
 import cors from 'cors';
-import graphQLHTTP from 'express-graphql';
+//import graphQLHTTP from 'express-graphql';
 import myschema from './schema/index'
 import {ApolloServer} from 'apollo-server-express';
 import { createServer } from 'http';
