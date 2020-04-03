@@ -1,9 +1,10 @@
 import { IResolvers } from "graphql-tools";
 import query from "./query";
+import type from "./type";
 
 const resolvers : IResolvers = {
-    // esto viene de query.ts
-        ...query
+        ...query,
+        ...type
     };
 
-    export default resolvers;
+export default resolvers;

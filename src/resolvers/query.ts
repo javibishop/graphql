@@ -1,19 +1,27 @@
 import { IResolvers } from "graphql-tools";
+import { database } from "../data/data.store";
 
 const query : IResolvers = {
-    // aca se pone con que se trabaja.
         Query: {
-            hola(): string{
-                return 'Hola Mundo';
+            estudiantes(): any {
+                return database.estudiantes;
             },
-            holaConNombre(__: void, {
-                nombre
-            }): string{
-                return `Hola Mundo ${nombre}`;
+            estudiante(__: void, {id}) : any{
+                let result = database.estudiantes.filter(est => est.id === id)[0];
+                if(!result){
+                    return{
+                        id: "-1",
+                        name: `No se encontro el estudiante con id ${id}`,
+                        email: '',
+                        courses:[]
+                    }
+                }else{
+                    return result;
+                }
             },
-            holaAlCurso(): string{
-                return 'Hola Mundo cursograpql';
-            }
+            cursos(): any {
+                return database.cursos;
+            },
         }
     };
 

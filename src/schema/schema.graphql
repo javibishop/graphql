@@ -1,5 +1,49 @@
+#En query define todo lo que se ve, pero estas operaciones hay q resolverlo en otro lado, esto lo h ace en
+
 type Query {
-        hola: String!
-        holaConNombre(nombre: String!): String!
-        holaAlCurso: String!
+        "Lista de estudiantes"
+        estudiantes:[Estudiante!]!
+        "Estudiante por ID"
+        estudiante(id:ID!): Estudiante!
+        "Listado de cursos"
+        cursos: [Curso!]! 
     }
+
+
+"Informacion de estudiantes"
+type Estudiante {
+    id:ID!
+    name: String!
+    email: String!
+    website: String
+    courses: [Curso!]!
+}
+
+type Curso {
+    id:ID!
+    title: String!
+    description: String!
+    logo: String!
+    path: String!
+    teacher: String!
+    reviews: [Valoracion]
+    level: Nivel!
+    clases: Int!
+    time: Float!
+    students: [Estudiante!]!
+}
+
+type Valoracion {
+    id:ID!
+    name: String!
+    points: Float!
+    comment: String
+}
+
+enum Nivel {
+    Todos
+    Novato
+    Intermedio
+    Experto
+}
+
