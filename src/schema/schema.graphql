@@ -1,14 +1,34 @@
 #En query define todo lo que se ve, pero estas operaciones hay q resolverlo en otro lado, esto lo h ace en
 
 type Query {
+
         "Lista de estudiantes"
         estudiantes:[Estudiante!]!
         "Estudiante por ID"
         estudiante(id:ID!): Estudiante!
         "Listado de cursos"
         cursos: [Curso!]! 
+        "Curso por ID"
+        curso(id:ID!): Curso!
     }
 
+type Mutation{
+    cursoNuevo(curso: CursoInput!): Curso!
+    cursoEdicion(curso: CursoInput!): Curso!
+    cursoEliminar(id:ID!): Curso!
+}
+
+input CursoInput{
+    id:ID
+    title: String!
+    description: String!
+    logo: String!
+    path: String!
+    teacher: String!
+    level: Nivel! = Todos
+    clases: Int!
+    time: Float!
+}
 
 "Informacion de estudiantes"
 type Estudiante {

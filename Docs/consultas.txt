@@ -1,0 +1,73 @@
+{
+  curso(id:"1"){
+    id
+    description
+    path
+    students{
+      name
+    }
+  }
+}
+
+curso nuevo:
+mutation cursoNuevo($cursoInput: CursoInput!){
+ cursoNuevo(curso: $cursoInput){
+  	id
+	} 
+}
+
+query variable
+{
+  "cursoInput": {
+    "title": "Nuevo curso",
+    "description": "Nuevo curso",
+    "logo": "",
+    "path": "",
+    "teacher": "Juana",
+    "level": "Todos",
+    "clases": 30,
+    "time": 60
+	}
+}
+
+gql 4 error.png --> esto se da pq hay un error, que le falta la coma despues del id, en la variable, entonces no dice, hay un error en la variable bla bla bla, sino que te dice q no se le esta pasando
+la entrada a la funcion.
+
+Edicion
+mutation cursoEdicion($cursoInput2: CursoInput!){
+ cursoEdicion(curso: $cursoInput2){
+  	id
+	} 
+}
+
+variable
+
+{
+  "cursoInput2":{
+    "id": "5",
+    "title": "Cambio de nombre 2",
+    "description": "Cambio de nombre 2",
+    "logo": "",
+    "path": "",
+    "teacher": "Juana",
+    "level": "Todos",
+    "clases": 30,
+    "time": 60.5
+	}
+}
+
+Eliminar
+mutation eliminarCurso($id: ID!){
+ cursoEliminar(id: $id){
+  	id
+  title
+	} 
+}
+
+variable  
+{
+  "id": "5"
+}
+
+aca, por ej, en mutation eliminarCurso($id: ID!){ le digo que voy a usar una var $id que esdel tipo ID, entonces, luego le digo que el id va a ser la variable $id por ende en variables tnego
+que tener la variable esa. Mismo para los otros casos, edicion y nuevo.

@@ -22,6 +22,27 @@ const query : IResolvers = {
             cursos(): any {
                 return database.cursos;
             },
+            curso(__: void, {id}) : any{ 
+                let curso = database.cursos.filter(cur => cur.id === id)[0];
+                if(curso === undefined){
+                    return {
+                        id:"-1",
+                        title: "No se encontro le curso",
+                        description: "",
+                        logo: "",
+                        path: "",
+                        teacher: "",
+                        reviews: [],
+                        level: 'Novato',
+                        clases: 0,
+                        time: 0,
+                        students: []
+                    }
+                }
+                else{
+                    return curso;
+                }
+            }
         }
     };
 
